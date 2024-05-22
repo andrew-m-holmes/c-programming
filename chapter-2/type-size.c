@@ -22,6 +22,7 @@ int main() {
 
   // more advanced types
   unsigned int ui = -1; // (applies modulo arithmetic to put in range)
+  printf("\n%u\n", ui);
   short int si = 32;
   unsigned short int usi = 0;
   long l = 30280283222;

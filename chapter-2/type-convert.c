@@ -1,10 +1,16 @@
+#include <math.h>
 #include <stdio.h>
+
+unsigned long next = 1;
 
 int atoi(const char s[]);
 void lower(char s[]);
 double halve(double n);
+unsigned long rand(void);
+void srand(unsigned long seed);
 
 int main() {
+
   printf("%d\n", atoi("892"));
   printf("%d\n", atoi("0"));
   printf("%d\n", atoi("308028"));
@@ -47,6 +53,18 @@ int main() {
   printf("%lf\n", halve(i)); // casted
   i = 33;
   printf("%lf\n", halve((double)i)); // explicit cast
+
+  i = 25;
+  printf("%lf\n", sqrt(i));
+  printf("%lf\n", sqrt((double)i));
+  printf("%lf\n", sqrt(25));
+
+  srand(3);
+  printf("rand: %lu\n", rand());
+  printf("rand: %lu\n", rand());
+  printf("rand: %lu\n", rand());
+  printf("rand: %lu\n", rand());
+
   return 0;
 }
 
@@ -74,3 +92,10 @@ void lower(char s[]) {
 }
 
 double halve(double n) { return n / 2.0; }
+
+unsigned long rand() {
+  next = next * 12208302 + 12183;
+  return (unsigned long)(next % 32768);
+}
+
+void srand(unsigned long seed) { next = seed; }

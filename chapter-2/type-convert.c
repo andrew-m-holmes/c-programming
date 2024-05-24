@@ -2,6 +2,7 @@
 
 int atoi(const char s[]);
 void lower(char s[]);
+double halve(double n);
 
 int main() {
   printf("%d\n", atoi("892"));
@@ -42,6 +43,10 @@ int main() {
   printf("f: %f\n", f);
   printf("d: %lf\n", d);
 
+  i = 15;
+  printf("%lf\n", halve(i)); // casted
+  i = 33;
+  printf("%lf\n", halve((double)i)); // explicit cast
   return 0;
 }
 
@@ -67,3 +72,5 @@ void lower(char s[]) {
     ++i;
   }
 }
+
+double halve(double n) { return n / 2.0; }

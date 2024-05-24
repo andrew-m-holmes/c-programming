@@ -49,9 +49,7 @@ int main() {
   printf("largest double: %lf\n", DBL_MAX);
 
   printf("\n");
-  printf("smallest char unsigned: %d\n", UCHAR_MAX - UCHAR_MAX);
   printf("smallest char signed: %d\n", SCHAR_MIN);
-  printf("smallest int unsigned: %u\n", UINT_MAX - UINT_MAX);
   printf("smallest int signed: %d\n", INT_MIN);
   printf("smallest float: %f\n", FLT_MIN);
   printf("smallest double: %lf\n", DBL_MIN);

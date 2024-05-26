@@ -1,9 +1,12 @@
+#include <ctype.h>
 #include <math.h>
 #include <stdio.h>
+#include <string.h>
 
 unsigned long next = 1;
 
 int atoi(const char s[]);
+int htoi(const char s[]);
 void lower(char s[]);
 double halve(double n);
 unsigned long rand(void);
@@ -14,6 +17,11 @@ int main() {
   printf("%d\n", atoi("892"));
   printf("%d\n", atoi("0"));
   printf("%d\n", atoi("308028"));
+
+  printf("htoi: %d\n", htoi("0X1F"));
+  printf("htoi: %d\n", htoi("0x1b"));
+  printf("htoi: %d\n", htoi("FF"));
+  printf("htoi: %d\n", htoi("0x34FF"));
 
   char s[] = "HELLO my friend!";
   lower(s);
@@ -74,6 +82,27 @@ int atoi(const char s[]) {
   // s[i++] gets converted to an int from a char (narrow -> wide)
   while ((c = s[i++]) != '\0' && c >= '0' && c <= '9') {
     n = n * 10 + c - '0';
+  }
+  return n;
+}
+
+int htoi(const char s[]) {
+  int i, c, n, exp, len;
+  len = strlen(s);
+  i = len - 1;
+  n = exp = 0;
+
+  while (i >= 0 && (c = tolower(s[i])) != 'x') {
+    if (c >= 'a' && c <= 'f') {
+      n += (int)pow(16, exp) * ((c - 'a') + 10);
+    } else if (c >= '0' && c <= '9') {
+      n += (int)pow(16, exp) * (c - '0');
+    } else {
+      break;
+    }
+
+    ++exp;
+    --i;
   }
   return n;
 }
